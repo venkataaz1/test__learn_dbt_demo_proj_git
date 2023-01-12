@@ -1,0 +1,17 @@
+
+version: 2
+
+sources:
+  - name: optical-psyche-371410
+    database: optical-psyche-371410
+    schema: dbt_test_env_ds
+    tables:
+      - name: Input_customer
+      - name: src_orders
+models:
+  - name: customer_data
+    tests:
+      - dbt_utils.equality:
+          compare_model: ref('in_customer_data_expected')
+          
+
